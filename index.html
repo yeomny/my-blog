@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog</title>
+<link rel="stylesheet" href="css/style.css">
+<script>
+  (function () {
+    var stored = localStorage.getItem("blog-theme");
+    var theme = stored || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.documentElement.setAttribute("data-theme", theme);
+  })();
+</script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-title" href="index.html">📝 Blog</a>
+      <button id="theme-toggle" class="theme-toggle" aria-label="테마 전환">🌙</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="controls">
+      <input id="search-input" class="search-input" type="text" placeholder="글 제목이나 요약 검색...">
+      <div id="tag-filters" class="tag-filters"></div>
+    </div>
+
+    <div id="post-list" class="post-list"></div>
+    <p id="empty-state" class="empty-state" hidden>조건에 맞는 글이 없습니다.</p>
+  </main>
+
+  <script src="js/theme.js"></script>
+  <script src="js/markdown.js"></script>
+  <script src="js/list.js"></script>
+</body>
+</html>
